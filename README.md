@@ -19,7 +19,7 @@
 | name         |   string   | null: false                              |
 | email        |   string   | null: false, unique: true                |
 | ...          |    ...     | ...                                      |
-- 実際にはdeviseを導入して`bundle exec rails g devise User`と`bundle exec rake db:migrate`でデータベースを作成する。
+- 実際にはdeviseを導入して`bundle exec rails g devise User`と`bundle exec rake db:migrate`でテーブルを作成する。
 
 ## Association
 - has_many :messages
