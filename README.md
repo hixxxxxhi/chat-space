@@ -6,8 +6,8 @@
 |:-------------|:----------:|:-----------------------------------------|
 | body         |    text    | null: false                              |
 | image        |   string   |                                          |
-| group_id     |   integer  | references :group, foreign_key: true     |
-| user_id      |   integer  | references :user, foreign_key: true      |
+| group_id     |   integer  |                                          |
+| user_id      |   integer  |                                          |
 
 ## Association
 - belongs_to :user
@@ -16,10 +16,7 @@
 ## users table
 |    Column    |    Type    |                 Options                  |
 |:-------------|:----------:|:-----------------------------------------|
-| name         |   string   | null: false                              |
-| email        |   string   | null: false, unique: true                |
-| ...          |    ...     | ...                                      |
-- 実際にはdeviseを導入して`bundle exec rails g devise User`と`bundle exec rake db:migrate`でテーブルを作成する。
+| name         |   string   | null: false, index: true                 |
 
 ## Association
 - has_many :messages
@@ -34,13 +31,12 @@
 ## Association
 - has_many :messages
 - has_many :users, through: :members
-- accepts_nested_attributes_for :members
 
 ## members table
 |    Column    |    Type    |                      Options                       |
 |:-------------|:----------:|:---------------------------------------------------|
-| user_id      |   integer  | references :user, foreign_key: true, index: true   |
-| group_id     |   integer  | references :group, foreign_key: true, index: true  |
+| user_id      |   integer  |                                                    |
+| group_id     |   integer  |                                                    |
 
 ## Association
 - belongs_to :user
