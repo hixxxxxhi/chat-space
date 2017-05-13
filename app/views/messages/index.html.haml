@@ -2,22 +2,7 @@
   .alert__message チャットグループが作成されました。
 
 #chat-view
-  #sidebar
-    .sidebar-header
-      %span.sidebar-header__user-name User name
-      %a{href: "", class: "sidebar-header__new-group-btn"}= fa_icon "pencil-square-o"
-      %a{href: "", class: "sidebar-header__edit-account-btn"}= fa_icon "cog"
-
-    .sidebar-group-list
-      %a{href: "", class: "sidebar-group-list__group chat-group"}
-        %p.chat-group__name Group 1
-        %p.chat-group__message Morning.
-      %a{href: "", class: "sidebar-group-list__group chat-group"}
-        %p.chat-group__name Group 2
-        %p.chat-group__message Afternoon.
-      %a{href: "", class: "sidebar-group-list__group chat-group"}
-        %p.chat-group__name Group 3
-        %p.chat-group__message Evening.
+  = render partial: "shared/sidebar"
 
   #chat
     .chat-header
