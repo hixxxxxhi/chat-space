@@ -1,0 +1,27 @@
+.sidebar-header {
+  width: 100vw;
+  height: 103px;
+  background-color: #253141;
+  padding: 0 20px;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+
+  & a {
+    color: $white;
+  }
+
+  &__user-name {
+    font-weight: bold;
+  }
+
+  &__new-group-btn {
+    position: absolute;
+    right: 40px;
+  }
+
+  &__edit-account-btn {
+    position: absolute;
+    right: 20px;
+  }
+}

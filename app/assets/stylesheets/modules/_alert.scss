@@ -1,0 +1,13 @@
+.alert {
+  width: 100vw;
+  height: 28px;
+  background-color: $light-blue;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+
+  &__message {
+    color: $white;
+    text-align: center;
+  }
+}

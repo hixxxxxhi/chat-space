@@ -1,0 +1,44 @@
+.chat-input {
+  height: 50px;
+  background-color: #bbc3c7;
+  padding: 20px 40px;
+
+  &__input-box {
+    height: 50px;
+    width: calc(100% - 15px - 100px - 20px);
+    float: left;
+    background-color: $white;
+    padding: 0 10px;
+    position: relative;
+
+    & a {
+      color: black;
+    }
+  }
+
+  &__input-field {
+    width: 95%;
+    height: 50px;
+    border: none;
+    outline: none;
+  }
+
+  &__choose-image-btn {
+    width: auto;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    right: 15px;
+  }
+
+  &__send-btn {
+    height: 50px;
+    width: 100px;
+    color: $white;
+    background-color: $light-blue;
+    border: none;
+    float: right;
+    margin-left: 15px;
+  }
+}
