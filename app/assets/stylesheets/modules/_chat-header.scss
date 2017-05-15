@@ -1,0 +1,30 @@
+.chat-header {
+  padding: 0 40px 15px;
+
+  &__group-name {
+    color: #333;
+    font-size: 20px;
+    float: left;
+    margin-top: 35px;
+  }
+
+  &__edit-btn {
+    height: 40px;
+    color: $light-blue;
+    border: solid 1px $light-blue;
+    float: right;
+    margin-top: 28px;
+    padding: 0 20px;
+    line-height: 40px;
+    & a{
+      color: $light-blue;
+    }
+  }
+
+  &__group-members {
+    color: #999;
+    font-size: 12px;
+    margin-top: 15px;
+    clear: both;
+  }
+}

@@ -1,0 +1,14 @@
+.sidebar-group-list {
+
+  & a {
+    color: $white;
+    display: block;
+    &:hover {
+      background-color: #F4FF81;
+    }
+  }
+
+  &__group {
+    padding: 20px 20px;
+  }
+}
