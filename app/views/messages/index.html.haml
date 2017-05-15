@@ -9,7 +9,7 @@
       .chat-header__group-name Group Name
 
       .chat-header__edit-btn.button
-        %a{href: ""} Edit
+        = link_to "Edit", ""
 
       .chat-header__group-members MEMBER: User name 1
 
@@ -45,7 +45,6 @@
       %form{action: "", method: "post"}
         .chat-input__input-box
           %input{type: "text", name: "input", placeholder: "Type a message", class: "chat-input__input-field"}
-          %a{href: "", class: "chat-input__choose-image-btn"}
-            = fa_icon "picture-o"
+          = link_to (fa_icon "picture-o"), "", class: "chat-input__choose-image-btn"
 
         %input{type: "submit", value: "Send", class: "chat-input__send-btn"}
