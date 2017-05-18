@@ -16,7 +16,7 @@
 ## users table
 |    Column    |    Type    |                 Options                  |
 |:-------------|:----------:|:-----------------------------------------|
-| name         |   string   | null: false, index: true                 |
+| name         |   string   | null: false, index: true, unique: true   |
 
 ## Association
 - has_many :messages
