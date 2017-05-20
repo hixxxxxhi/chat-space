@@ -12,10 +12,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails", "~> 0.9"
 gem "font-awesome-rails"
 gem 'devise'
-gem 'pry-rails'
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry-rails'
 end
 
 group :development do
