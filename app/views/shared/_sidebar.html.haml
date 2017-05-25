@@ -1,7 +1,7 @@
 #sidebar
   .sidebar-header
     %span.sidebar-header__user-name= current_user.name
-    %a{href: "", class: "sidebar-header__new-group-btn"}= fa_icon "pencil-square-o"
+    = link_to (fa_icon "pencil-square-o"), new_group_path, class: "sidebar-header__new-group-btn"
     = link_to (fa_icon "cog"), edit_user_registration_path, class: "sidebar-header__edit-account-btn"
 
   .sidebar-group-list
