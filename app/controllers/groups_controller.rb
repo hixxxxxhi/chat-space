@@ -6,8 +6,12 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create(group_params)
-    redirect_to controller: :messages, action: :index
+    @group = Group.new(group_params)
+    if @group.save
+      redirect_to root_path, notice: "グループが作成されました。"
+    else
+      render :new
+    end
   end
 
   private
