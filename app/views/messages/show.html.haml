@@ -1,1 +1,10 @@
-仮置きのビュー
+#chat-view
+  = render partial: "shared/sidebar"
+  #chat
+    = render partial: "shared/main"
+    .chat-input
+      = form_for([@group, @message]) do |f|
+        .chat-input__input-box
+          = f.text_field :body, class: "chat-input__input-field", placeholder: "Type a message"
+          = link_to (fa_icon "picture-o"), "", class: "chat-input__choose-image-btn"
+        = f.submit "Send", class: "chat-input__send-btn"
