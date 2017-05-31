@@ -5,5 +5,22 @@ class MessagesController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:group_id])
+    @message = Message.new
+  end
+
+  def create
+    @group = Group.find(params[:group_id])
+    @message = Message.new(body: message_params[:body], group_id: params[:group_id], user_id: current_user.id)
+    if @message.save
+      redirect_to group_messages_path(params[:group_id])
+    else
+      redirect_to group_messages_path(params[:group_id]), alert: "メッセージを入力してください。"
+    end
+  end
+
+  private
+  def message_params
+    params.require(:message).permit(:body)
   end
 end
