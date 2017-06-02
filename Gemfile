@@ -14,6 +14,7 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'devise-i18n'
 gem 'pry-rails'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug'
