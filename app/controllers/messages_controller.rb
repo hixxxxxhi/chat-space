@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
 
   def create
     group = Group.find(params[:group_id])
-    @message = Message.new(body: message_params[:body], group_id: params[:group_id], user_id: current_user.id)
+    @message = Message.new(body: message_params[:body], image: message_params[:image], group_id: params[:group_id], user_id: current_user.id)
     if @message.save
       redirect_to group_messages_path(group)
     else
