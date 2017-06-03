@@ -6,5 +6,6 @@
       = form_for [@group, @message] do |f|
         .chat-input__input-box
           = f.text_field :body, class: "chat-input__input-field", placeholder: "Type a message"
-          = link_to (fa_icon "picture-o"), "", class: "chat-input__choose-image-btn"
+          = f.label 'image', { class: "fa fa-image" } do
+            = f.file_field :image, style: "display: none;", id: "message_image", class: "chat-input__choose-image-btn"
         = f.submit "Send", class: "chat-input__send-btn"
