@@ -4,8 +4,7 @@
 
     .chat-header__edit-btn.button= link_to "Edit", edit_group_path(@group)
 
-    .chat-header__group-members= "MEMBER: #{@users_names.join(", ")}"
-
+    .chat-header__group-members= "MEMBER: #{comma_delimted_usernames(@group.users)}"
   .chat-border
 
   .chat-content

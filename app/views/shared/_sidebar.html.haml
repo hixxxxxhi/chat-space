@@ -10,10 +10,4 @@
         = link_to group_messages_path(group), class: "sidebar-group-list__group chat-group" do
           %p.chat-group__name= group.name
           %p.chat-group__message
-            - if group.messages.any?
-              - if group.messages.last.body.empty?
-                = "画像が投稿されています。"
-              - else
-                = group.messages.last.body
-            - else
-              = "まだメッセージはありません。"
+            = latest_message_or_status_message(group)
