@@ -7,6 +7,13 @@ class MessagesController < ApplicationController
   def show
     @group = Group.find(params[:group_id])
     @message = Message.new
+
+    # 現在のグループに所属するユーザの名前を配列に入れる
+    # _main.html.haml の "MEMBER: " の箇所でユーザ名を列挙するときに使う
+    @users_names = []
+    @group.users.each do |user|
+      @users_names << user.name
+    end
   end
 
   def create
