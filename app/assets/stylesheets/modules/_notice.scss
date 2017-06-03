@@ -1,11 +1,10 @@
-.alert {
+.notice {
   width: 100vw;
   height: 28px;
-  background-color: #D73445;
+  background-color: $light-blue;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
   color: $white;
   text-align: center;
 }
-

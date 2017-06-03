@@ -1,35 +1,22 @@
-.chat-header
-  .chat-header__group-name Group Name
+- unless @group.blank?
+  .chat-header
+    .chat-header__group-name= @group.name
 
-  .chat-header__edit-btn.button
-    = link_to "Edit", ""
+    .chat-header__edit-btn.button= link_to "Edit", edit_group_path(@group)
 
-  .chat-header__group-members MEMBER: User name 1
+    .chat-header__group-members= "MEMBER: #{divide_by_comma(@group.users)}"
+  .chat-border
 
-.chat-border
-
-.chat-content
-  .chat-content__message-list
-    .chat-message
-      .chat-message__user-name
-        User name 1
-        %span.chat-message__date-time
-          2017/05/13 14:40:00
-      .chat-message__message
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac arcu aliquam, consequat mauris eget, facilisis mi.
-
-    .chat-message
-      .chat-message__user-name
-        User name 2
-        %span.chat-message__date-time
-          2017/05/13 14:45:00
-      .chat-message__message
-        Sed dictum dolor vitae nunc accumsan, a pharetra metus venenatis. Etiam cursus massa ut magna dignissim, in feugiat urna interdum. Praesent vitae tortor eget est elementum consequat sit amet ut ante.
-
-    .chat-message
-      .chat-message__user-name
-        User name 1
-        %span.chat-message__date-time
-          2017/05/13 14:50:00
-      .chat-message__message
-        Nullam eleifend eget nulla non porta. Nulla auctor metus at bibendum suscipit. Nunc non ipsum et enim tempor aliquet ac viverra sapien.
+  .chat-content
+    .chat-content__message-list
+      - @group.messages.each do |message|
+        .chat-message
+          .chat-message__user-name
+            = message.user.name
+            %span.chat-message__date-time
+              = message.created_at.to_time.strftime('%Y/%m/%d %H:%M:%S')
+          .chat-message__message
+            - if message.body?
+              = message.body
+            - else
+              = image_tag message.image.url
