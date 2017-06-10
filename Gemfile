@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'rspec-rails'
 gem 'factory_girl_rails', '~> 4.4.1'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
