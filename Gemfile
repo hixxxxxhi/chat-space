@@ -17,9 +17,11 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rspec-rails'
+gem 'factory_girl_rails', '~> 4.4.1'
 
 group :development, :test do
   gem 'byebug'
+
 end
 
 group :development do
