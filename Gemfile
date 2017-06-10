@@ -16,6 +16,7 @@ gem 'devise-i18n'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'rspec-rails'
 
 group :development, :test do
   gem 'byebug'
