@@ -19,6 +19,7 @@ gem 'rmagick'
 gem 'rspec-rails'
 gem 'factory_girl_rails', '~> 4.4.1'
 gem 'faker'
+gem 'rails-controller-testing'
 
 group :development, :test do
   gem 'byebug'
