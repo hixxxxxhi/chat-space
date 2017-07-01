@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe MessagesController, type: :controller do
   let(:user) { create(:user) }
+  let(:group) { create(:group) }
 
   describe 'GET #show' do
     context 'when logged in' do
@@ -10,13 +11,11 @@ describe MessagesController, type: :controller do
       end
 
       it "assigns the requested group to @group" do
-        group = create(:group)
         get :show, params: { group_id: group.id }
         expect(assigns(:group)).to eq group
       end
 
       it "renders the :show template" do
-        group = create(:group)
         get :show, params: { group_id: group.id }
         expect(response).to render_template :show
       end
@@ -28,7 +27,6 @@ describe MessagesController, type: :controller do
 
     context 'when NOT logged in' do
       it "redirects to the /users/sign_in page" do
-        group = create(:group)
         get :show, params: { group_id: group.id }
         expect(response).to redirect_to(new_user_session_path)
       end
@@ -42,14 +40,12 @@ describe MessagesController, type: :controller do
 
     context 'when logged in and saved successfully' do
       it "saves the new message in the database" do
-        group = create(:group)
         expect{
           post :create, params: { group_id: group, message: attributes_for(:message) }
         }.to change(Message, :count).by(1)
       end
 
       it "redirects to group_messages_path(:group_id)" do
-        group = create(:group)
         post :create, params: { group_id: group, message: attributes_for(:message) }
         expect(response).to redirect_to(group_messages_path(group))
       end
@@ -57,13 +53,11 @@ describe MessagesController, type: :controller do
 
     context 'when logged in and NOT saved successfully' do
       it "does NOT save the new message in the database" do
-        group = create(:group)
         post :create, params: { group_id: group, message: attributes_for(:message, body: nil, image: nil) }
         expect(flash[:alert]).to match("メッセージを入力してください。")
       end
 
       it "redirects to group_messages_path(:group_id)" do
-        group = create(:group)
         post :create, params: { group_id: group, message: attributes_for(:message, body: nil, image: nil) }
         expect(response).to redirect_to(group_messages_path(group))
       end
