@@ -8,15 +8,14 @@ describe MessagesController, type: :controller do
     context 'when logged in' do
       before do
         login_user user
+        get :show, params: { group_id: group.id }
       end
 
       it "assigns the requested group to @group" do
-        get :show, params: { group_id: group.id }
         expect(assigns(:group)).to eq group
       end
 
       it "renders the :show template" do
-        get :show, params: { group_id: group.id }
         expect(response).to render_template :show
       end
 
@@ -52,19 +51,17 @@ describe MessagesController, type: :controller do
     end
 
     context 'when logged in and NOT saved successfully' do
-      it "does NOT save the new message in the database" do
+      before do
         post :create, params: { group_id: group, message: attributes_for(:message, body: nil, image: nil) }
+      end
+
+      it "does NOT save the new message in the database" do
         expect(flash[:alert]).to match("メッセージを入力してください。")
       end
 
       it "redirects to group_messages_path(:group_id)" do
-        post :create, params: { group_id: group, message: attributes_for(:message, body: nil, image: nil) }
         expect(response).to redirect_to(group_messages_path(group))
       end
-    end
-
-    after do
-        sign_out :user
     end
   end
 end
