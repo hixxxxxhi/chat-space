@@ -17,6 +17,7 @@
               = message.created_at.to_time.strftime('%Y/%m/%d %H:%M:%S')
           .chat-message__message
             - if message.body?
-              = message.body
+              %p= message.body
+              = image_tag message.image.url if message.image.url
             - else
               = image_tag message.image.url

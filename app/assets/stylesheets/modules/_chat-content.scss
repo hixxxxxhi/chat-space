@@ -1,6 +1,7 @@
 .chat-content {
   height: calc(100vh - 103px - 90px);
   background-color: $light-gray;
+  overflow: scroll;
 
   &__message-list {
     padding: 46px 40px 0;
