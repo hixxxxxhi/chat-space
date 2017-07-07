@@ -1,6 +1,5 @@
 $(function() {
   function buildHtml(message) {
-    var imageHtml = message.image_url ? `<img src="${message.image_url}">` : "";
     var html = `<div class="chat-message">
                   <div class="chat-message__user-name">
                     ${message.user_name}
@@ -10,8 +9,12 @@ $(function() {
                   </div>
                   <div class="chat-message__message">
                     <p>${message.body}</p>
-                    ${imageHtml}
-                  </div>
+                    `
+    if (message.image_url) {
+      html = html + `<img src="${message.image_url}">`;
+    }
+
+    html = html + `</div>
                 </div>`;
 
     return html;
@@ -33,7 +36,6 @@ $(function() {
     })
     .done(function(data) {
       var html = buildHtml(data);
-
       $('.chat-content__message-list').append(html);
       $('.chat-input__input-field').val('');
       $(".chat-input__choose-image-btn[type='file']").val('');
