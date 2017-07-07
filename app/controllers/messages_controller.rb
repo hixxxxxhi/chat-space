@@ -13,7 +13,10 @@ class MessagesController < ApplicationController
     group = Group.find(params[:group_id])
     @message = group.messages.new(message_params)
     if @message.save
-      redirect_to group_messages_path(group)
+      respond_to do |format|
+        format.html { redirect_to group_messages_path(group) }
+        format.json
+      end
     else
       redirect_to group_messages_path(group), alert: "メッセージを入力してください。"
     end
