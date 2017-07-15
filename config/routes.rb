@@ -5,9 +5,5 @@ Rails.application.routes.draw do
     resource :messages, only: [:create, :show]
   end
 
-  resources :users, only: [] do
-    collection do
-      get 'search'
-    end
-  end
+  get '/users/search' => 'users#search'
 end
