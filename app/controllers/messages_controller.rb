@@ -7,6 +7,10 @@ class MessagesController < ApplicationController
   def show
     @group = Group.find(params[:group_id])
     @message = Message.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
