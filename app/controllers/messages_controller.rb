@@ -2,9 +2,6 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  end
-
-  def show
     @group = Group.find(params[:group_id])
     @message = Message.new
     respond_to do |format|
