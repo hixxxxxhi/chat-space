@@ -65,11 +65,11 @@ $(function() {
                   </div>
                   <div class="chat-message__message">`;
 
-    if (message.body) {
+    if (message.body !== '') {
       html = html + `<p>${message.body}</p>`;
     }
 
-    if (message.image_url) {
+    if (message.image_url !== null) {
       html = html + `<img src="${message.image_url}">`;
     }
 
