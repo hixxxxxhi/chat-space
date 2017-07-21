@@ -4,14 +4,15 @@ $(function() {
     var html = `<div class="chat-message" data-id="${message.id}">
                   <div class="chat-message__user-name">
                     ${message.user_name}
-                    <span class="chat-message__date-time">
-                      ${message.created_at}
-                    </span>
+                    <span class="chat-message__date-time">${message.created_at}</span>
                   </div>
-                  <div class="chat-message__message">
-                    <p>${message.body}</p>
-                    `
-    if (message.image_url) {
+                  <div class="chat-message__message">`;
+
+    if (message.body !== '') {
+      html = html + `<p>${message.body}</p>`;
+    }
+
+    if (message.image_url !== null) {
       html = html + `<img src="${message.image_url}">`;
     }
 
@@ -58,23 +59,7 @@ $(function() {
   var messageList = $(".chat-content__message-list");
 
   function appendMessage(message) {
-    var html = `<div class="chat-message" data-id="${message.id}">
-                  <div class="chat-message__user-name">
-                    ${message.user_name}
-                    <span class="chat-message__date-time">${message.created_at}</span>
-                  </div>
-                  <div class="chat-message__message">`;
-
-    if (message.body !== '') {
-      html = html + `<p>${message.body}</p>`;
-    }
-
-    if (message.image_url !== null) {
-      html = html + `<img src="${message.image_url}">`;
-    }
-
-    html = html + `</div>
-                </div>`;
+    html = buildHtml(message)
 
     messageList.append(html);
   }
