@@ -8,11 +8,11 @@ $(function() {
                   </div>
                   <div class="chat-message__message">`;
 
-    if (message.body !== '') {
+    if (message.body) {
       html = html + `<p>${message.body}</p>`;
     }
 
-    if (message.image_url !== null) {
+    if (message.image_url) {
       html = html + `<img src="${message.image_url}">`;
     }
 
