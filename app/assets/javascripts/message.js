@@ -1,7 +1,7 @@
 $(function() {
   // メッセージ送信の非同期化
   function buildHtml(message) {
-    var html = `<div class="chat-message">
+    var html = `<div class="chat-message" data-id="${message.id}">
                   <div class="chat-message__user-name">
                     ${message.user_name}
                     <span class="chat-message__date-time">
@@ -58,7 +58,7 @@ $(function() {
   var messageList = $(".chat-content__message-list");
 
   function appendMessage(message) {
-    var html = `<div class="chat-message">
+    var html = `<div class="chat-message" data-id="${message.id}">
                   <div class="chat-message__user-name">
                     ${message.user_name}
                     <span class="chat-message__date-time">${message.created_at}</span>
@@ -88,12 +88,15 @@ $(function() {
     })
     .done(function(messages) {
       if (messages !== 0) {
-        // いったんすべてのメッセージを削除する
-        messageList.empty();
-
-        // すべてのメッセージを表示する
         messages.forEach(function(message) {
-          appendMessage(message);
+          var element = $(`[data-id="${message.id}"]`);
+
+          if (element[0]) {  // すでに表示されているメッセージの場合
+            // 何もしない
+          } else {  // まだ表示されていないメッセージの場合
+            // ビューに追加する
+            appendMessage(message);
+          }
         });
       }
     })
