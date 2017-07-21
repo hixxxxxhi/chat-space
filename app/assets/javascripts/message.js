@@ -54,8 +54,8 @@ $(function() {
   });
 
   // メッセージの自動更新処理
-  var current_path = location.pathname;  // 現在のページのパス
-  var message_list = $(".chat-content__message-list");
+  var currentPath = location.pathname;  // 現在のページのパス
+  var messageList = $(".chat-content__message-list");
 
   function appendMessage(message) {
     var html = `<div class="chat-message">
@@ -76,12 +76,12 @@ $(function() {
     html = html + `</div>
                 </div>`;
 
-    message_list.append(html);
+    messageList.append(html);
   }
 
   var autoUpdateMessages = function() {
     $.ajax({
-      url: current_path,
+      url: currentPath,
       type: "GET",
       data: { },
       dataType: 'json',
@@ -89,7 +89,7 @@ $(function() {
     .done(function(messages) {
       if (messages !== 0) {
         // いったんすべてのメッセージを削除する
-        message_list.empty();
+        messageList.empty();
 
         // すべてのメッセージを表示する
         messages.forEach(function(message) {
@@ -103,7 +103,7 @@ $(function() {
   }
 
   // 現在のページがメッセージリストを表示するページである場合のみ、メッセージの自動更新を行う
-  if (current_path.match(/\/groups\/\d+\/messages/i)) {
+  if (currentPath.match(/\/groups\/\d+\/messages/i)) {
     setInterval(autoUpdateMessages, 5000);
   }
 });
