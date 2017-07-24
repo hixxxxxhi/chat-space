@@ -1,9 +1,8 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: [:index, :create]
+  before_action :set_group, :set_message, only: [:index, :create]
 
   def index
-    @message = Message.new
     @messages = @group.messages.includes(:user)
     respond_to do |format|
       format.html
@@ -19,7 +18,8 @@ class MessagesController < ApplicationController
         format.json
       end
     else
-      redirect_to group_messages_path(group), alert: "メッセージを入力してください。"
+      flash.now[:alert] = "メッセージを入力してください。"
+      render :create
     end
   end
 
@@ -30,5 +30,9 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
+  end
+
+  def set_message
+    @message = Message.new
   end
 end
