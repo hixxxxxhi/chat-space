@@ -76,9 +76,7 @@ $(function() {
         messages.forEach(function(message) {
           var element = $(`[data-id="${message.id}"]`);
 
-          if (element[0]) {  // すでに表示されているメッセージの場合
-            // 何もしない
-          } else {  // まだ表示されていないメッセージの場合
+          if (!element[0]) {  // まだ表示されていないメッセージの場合
             // ビューに追加する
             appendMessage(message);
           }
