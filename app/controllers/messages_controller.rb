@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :set_group, :set_message, only: [:index, :create]
 
   def index
-    @messages = @group.messages.includes(:user)
+    set_messages
     respond_to do |format|
       format.html
       format.json
@@ -18,8 +18,12 @@ class MessagesController < ApplicationController
         format.json
       end
     else
+      set_group
+      set_message
+      set_messages
+
       flash.now[:alert] = "メッセージを入力してください。"
-      render :create
+      render :index
     end
   end
 
@@ -34,5 +38,9 @@ class MessagesController < ApplicationController
 
   def set_message
     @message = Message.new
+  end
+
+  def set_messages
+    @messages = @group.messages.includes(:user)
   end
 end
