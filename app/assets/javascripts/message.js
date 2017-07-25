@@ -37,17 +37,21 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      var html = buildHtml(data);
-      $('.chat-content__message-list').append(html);
-      $('.chat-input__input-field').val('');
-      $(".chat-input__choose-image-btn[type='file']").val('');
+      if (data.id) {
+        var html = buildHtml(data);
+        $('.chat-content__message-list').append(html);
+        $('.chat-input__input-field').val('');
+        $(".chat-input__choose-image-btn[type='file']").val('');
 
-      $('.chat-content').delay(100).animate({
-        scrollTop: $('.chat-content__message-list').height()
-      }, 1500);
+        $('.chat-content').delay(100).animate({
+          scrollTop: $('.chat-content__message-list').height()
+        }, 1500);
+      } else {
+        alert("Please input a message and/or image");
+      }
     })
     .fail(function() {
-      alert("Failed to send a message")
+      alert("Failed to send a message");
     })
     .always(function() {
       $(".chat-input__send-btn").attr('disabled', false);
@@ -84,7 +88,7 @@ $(function() {
       }
     })
     .fail(function() {
-      alert("Failed to auto-update the message list")
+      alert("Failed to auto-update the message list");
     });
   }
 
