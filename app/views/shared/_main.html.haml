@@ -7,17 +7,4 @@
     .chat-header__group-members= "MEMBER: #{divide_by_comma(@group.users)}"
   .chat-border
 
-  .chat-content
-    .chat-content__message-list
-      - @group.messages.each do |message|
-        .chat-message
-          .chat-message__user-name
-            = message.user.name
-            %span.chat-message__date-time
-              = message.created_at.to_time.strftime('%Y/%m/%d %H:%M:%S')
-          .chat-message__message
-            - if message.body?
-              %p= message.body
-              = image_tag message.image.url if message.image.url
-            - else
-              = image_tag message.image.url
+  = render partial: "shared/chat-content", locals: {group: @group}
